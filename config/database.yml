@@ -11,7 +11,7 @@ default: &default
 
 development:
   <<: *default
-  database: globe_trottr
+  database: globe_trottr_database
   username: postgres
   password: postgres
 
