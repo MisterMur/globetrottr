@@ -1,0 +1,64 @@
+// Place all the styles related to the session controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+// body{
+// background-image: url('https://media.giphy.com/media/sfjfPOe8DKptm/giphy.gif');
+// background-size: cover;
+// background-repeat: no-repeat;
+// height: 100%;
+// font-family: 'Numans', sans-serif;
+// }
+
+// .container{
+// height: 100%;
+// align-content: center;
+// }
+
+.card{
+min-height: 350px;
+width: 400px;
+background-color: rgba(255,255,255,0.5) !important;
+}
+
+.card-header h3{
+color: black;
+}
+
+.input-group-prepend span{
+width: 30px;
+background-color: rgba(37, 116, 169, 1);
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+
+.login_btn{
+color: black;
+background-color: rgba(255,255,255,0) ;
+width: 100px;
+}
+
+// .login_btn:hover{
+// color: black;
+// background-color: white;
+// }
+
+.links{
+color: black;
+}
+
+.links a{
+margin-left: 4px;
+}

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="d-flex justify-content-center h-100 smpad">
+    <div class="card" id="signup">
+      <div class="d-inline-flex card-body justify-content-center smpad">
+          <%= simple_form_for @user do |f| %>
+          <div class="form-group smpad">
+              <%= f.input :first_name%>
+          </div>
+          <div class="form-group smpad">
+              <%= f.input :last_name %>
+          </div>
+          <div class="form-group smpad">
+              <%= f.input :birthdate, as: :date, end_year: Date.today.year - 90,
+                                          start_year: Date.today.year,
+                                          order: [:month, :day, :year] %>
+          </div>
+          <div class="form-group smpad">
+              <%= f.input :email %>
+          </div>
+          <div class="form-group smpad">
+              <%= f.input :username %>
+          </div>
+          <div class="form-group smpad">
+              <%= f.input :password %>
+          </div>
+
+          <div class="form-group smpad">
+              <%= f.input :private, label: "Make profile private", as: :boolean, checked_value: true, unchecked_value: false %>
+          </div>
+      </div>
+
+          <div class="d-inline-flex justify-content-center smpad">
+              <%= f.button :submit, class: "btn btn-custom btn-small" %>
+          </div>
+        <% end %>
+
+    </div>
+  </div>
+</div>

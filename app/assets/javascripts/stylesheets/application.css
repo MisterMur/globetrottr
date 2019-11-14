@@ -1,0 +1,132 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+ /* body {
+   font-family: 'Arial';
+ } */
+
+ #main {
+   margin-top: 160px;
+ }
+
+ #description {
+   margin-top: 50px;
+ }
+
+ #homepage {
+   background: url('https://media.giphy.com/media/sfjfPOe8DKptm/giphy.gif') no-repeat;
+   background-size: cover;
+   height: 1000px;
+ }
+
+ #inputsm {
+   height: 25px;
+   width: 100px;
+   font-size: 12px;
+ }
+
+ #signin {
+  margin-top: 200px;
+ }
+
+ #globetrottr {
+   margin-top: 300px;
+ }
+
+ .btn-home {
+   background-color: rgba(255,255,255,0);
+ }
+
+ .btn-home:hover {
+   background-color: rgb(219,112,147);
+   color: white;
+ }
+
+ .btn-custom {
+   background-color: rgba(0, 181, 204, 1);
+   color: white;
+ }
+
+ .btn-custom:hover {
+   background-color: rgba(37, 116, 169, 1);
+   /* color: rgba(52, 73, 94, 1); */
+   color: white;
+ }
+
+ .destination-pad {
+   margin-top: 180px;
+   margin-bottom: 50px;
+ }
+
+ .beach-bg{
+ background-image: url('https://media.giphy.com/media/sfjfPOe8DKptm/giphy.gif');
+ background-size: cover;
+ background-repeat: no-repeat;
+ height: 100%;
+ font-family: 'Numans', sans-serif;
+ }
+
+ .tinypad {
+   margin-top: 5px;
+   margin-left: 2px;
+   margin-right: 2px;
+ }
+
+ .upperpad {
+  margin-top: 80px;
+ }
+
+ .small-type {
+   font-size: 12px;
+   padding: 2px;
+   margin: 5px;
+ }
+
+ .destination-white {
+   background-color: rgba(255, 255, 255, 0.5);
+   height: 500px;
+ }
+
+ .show-white {
+   background-color: rgba(255, 255, 255, 0.9);
+   height: 100%;
+   padding: 20px;
+ }
+
+/* nav-bar stuff */
+ .fixed-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(255,255,255);
+  /* border-bottom: 1px solid rgba(0,0,0); */
+  /* padding: 30px; */
+ }
+ /* Change the color of links on hover */
+ .fixed-nav-bar a:hover {
+   /* background-color: #ddd; */
+   color: rgb(255,20,147);
+ }
+
+ /* Add a color to the active/current link */
+ .fixed-nav-bar a.active {
+   background-color: #4CAF50;
+   color: white;
+ }

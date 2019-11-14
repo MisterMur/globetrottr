@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="d-flex justify-content-center h-100 headpad">
+    <h2><%= @activity.name %></h2>
+  </div>
+  <% if @activity.trips.include?(@trip) %>
+  <div class="d-flex justify-content-center h-100 headpad">
+    <h5>You're headed here on <%= @trip_activity.date %>!</h5>
+  </div>
+  <% end %>
+
+  <div class="row">
+
+    <div class="col-sm-6">
+      <% if @activity.photo_url != "Photo Unavailable"%>
+        <img height="300" width="450" src="<%= @activity.photo_url %>" alt="Photo Unavailable" class="headpad">
+      <% end %>
+
+      <h6>Name: <%= @activity.name %> </h6>
+      <h6>Address: <%= @activity.address %> </h6>
+      <% if !!@activity.rating %>
+        <h6>Rating: <%= @activity.rating %> </h6>
+      <% end %>
+
+      <% if !!@activity.price_level %>
+        <h6>Price Level: <%= @activity.price_level %> </h6>
+      <% end %>
+    </div>
+
+    <div class="col-sm-4">
+      <iframe width="550" height="420" frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/search?q=<%= @search%>%20<%=@activity.format_address_for_search %>&key=AIzaSyBcF7WmTnqaJVXqW1u4Z2rhHEjOeiaNRtg" allowfullscreen></iframe>
+      <ul>
+    </div>
+
+  </div>
+
+
+  <% if @activity.trips.include?(@trip) %>
+  <div class="d-flex justify-content-center h-100 bottom-pad">
+    <%= button_to "Back to trip", @trip, method: :get, class: "btn btn-custom btn-sm smpad", id: "btnpad" %>
+    <%= button_to "Delete from itinerary", @activity, method: :delete, params: {trip_id: @trip.id, activity_id: @activity.id}, class: "btn btn-custom btn-sm smpad", id: "btnpad" %>
+  </div>
+  <% elsif !!@trip%>
+  <div class="d-flex justify-content-center h-100 bottom-pad">
+      <%= button_to "Add to itinerary", activities_add_to_trip_path, method: :post, params: {trip_id: @trip.id, activity_id: @activity.id, date: @date.to_s}, class: "btn btn-custom btn-sm smpad", id: "btnpad" %>
+      <%= button_to "Return to #{@search}", activities_path, params: {trip_id: @trip.id, search: @search, date: @date.to_s}, method: :get, class: "btn btn-custom btn-sm smpad", id: "btnpad" %>
+  </div>
+  <% else %>
+  <div class="d-flex justify-content-center h-100 bottom-pad">
+    <%= button_to "Return to #{@search}", destination_path(@activity.destination_id), params: {search: @search}, method: :get, class: "btn btn-custom btn-sm smpad", id: "btnpad" %>
+  </div>
+  <% end %>
+</div>
+
+
+</div>

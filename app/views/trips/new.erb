@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="smpad">
+
+    <% if @country == [] || @country == nil %>
+
+    <div class="d-flex justify-content-center h-100 destination-pad">
+      <h3>Create New Trip</h3>
+    </div>
+
+    <div class="d-flex justify-content-center h-100">
+      <%= form_tag new_trip_path, method: "get" do %>
+        <h6>Select Country:</h6>
+    </div>
+    <div class="d-flex justify-content-center h-100">
+          <%= collection_select :destination, :country_id, Country.all, :id, :name %>
+    </div>
+    <div class="d-flex justify-content-center h-100 smpad">
+        <%= submit_tag("Search", class: "btn btn-custom btn-sm smpad", id: "btnpad") %>
+      <% end %>
+    </div>
+
+    <% else %>
+
+    <div class="d-flex justify-content-center h-100 destination-pad">
+      <h3>New Trip to <%= @country.name %></h3>
+    </div>
+
+    <!-- <div class="d-flex justify-content-center h-100 smpad">
+          <%# <%= flash[:errors] %> %>
+    </div> -->
+
+    <div class="d-flex justify-content-center h-100 smpad">
+
+      <%= simple_form_for @trip do |f| %>
+        <h6><%= f.label :trip_name %>
+        <%= f.text_field :trip_name, list: 'trip_names' %>
+        <datalist id="trip_names">
+          <% Trip.trip_names(current_user.id).each do |trip| %>
+            <option value="<%= trip %>"></option>
+          <% end %>
+        </datalist></h6>
+          <h6><%= f.input :destination_id, collection: @destination_cities, label_method: :city_state%></h6>
+        <h6><%= f.input :start_date, as: :date, start_year: Date.today.year,
+                                    end_year: Date.today.year + 5,
+                                    order: [:month, :day, :year] %></h6>
+        <h6><%= f.input :end_date, as: :date, start_year: Date.today.year,
+                                    end_year: Date.today.year + 5,
+                                    order: [:month, :day, :year] %></h6>
+        <div class="d-flex justify-content-center">
+          <%= f.button :submit, class: "btn btn-custom btn-sm smpad", id: "btnpad" %>
+        </div>
+      <% end %>
+
+    <% end %>
+  </div>
+</div>

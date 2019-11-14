@@ -1,0 +1,50 @@
+<div class="container">
+
+  <div class="d-flex justify-content-center h-100 headpad">
+    <h3>Your Upcoming Trips</h3>
+  </div>
+
+  <% if @user.trips == [] %>
+    <div class="d-flex justify-content-center h-100 smpad">
+      <img height="400" src="<%= Image.all.sample.url %>"><br>
+    </div>
+    <div class="d-flex justify-content-center h-100 smpad">
+      <h4>You don't have any upcoming trips!</h4>
+    </div>
+    <div class="d-flex justify-content-center h-100 smpad">
+      <%= button_to "Click here to get started", new_trip_path(@user), method: :get, class: "btn btn-custom btn-sm", id: "btnpad" %>
+    </div>
+  <% else %>
+
+    <% @user.view_trip_names.each do |trip_name| %>
+
+      <div class="d-flex justify-content-center h-100 smpad">
+        <h5><%= trip_name %></h5>
+      </div>
+
+
+
+        <% @user.select_trips(trip_name).each do |trip|%>
+        <div class="d-flex justify-content-center h-100">
+          <p><%= trip.start_date.strftime("%m/%d/%Y") %> - <%= trip.end_date.strftime("%m/%d/%Y") %>:
+            <%= link_to trip.to_s, trip %></p>
+        </div>
+
+        <div class="d-flex justify-content-center h-100">
+            <ul>
+            <% trip.trip_activities.each do |ta| %>
+              <li><%= link_to ta.activity.name, activity_path(id: ta.activity_id, trip_id: trip.id) %></li>
+            <% end %>
+            </ul>
+        </div>
+      <% end %>
+
+
+    <% end %>
+
+    <div class="d-flex justify-content-center h-100 bottom-pad">
+      <%= button_to "Create New Trip", new_trip_path(@user.id), method: :get, class: "btn btn-custom btn-sm", id: "btnpad" %>
+    </div>
+  <% end %>
+
+  </div>

@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="d-flex justify-content-center h-100 headpad">
+    <h3>Welcome to the globe trottr community!</h3>
+  </div>
+  <div class="d-flex justify-content-center h-100">
+    <p>See where fellow globe trottr users are going!</p>
+  </div>
+  <div class="d-flex justify-content-center h-100">
+    <p>P.S. You can make your profile private if you do not wish to share your information with our community</p>
+  </div>
+
+  <div class="d-flex justify-content-center h-100 subpad">
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4">
+        <% @users.each do |user| %>
+          <% if user.private == nil %>
+          <p class="smpad">- - -</p>
+            <h5><%= user.username %> is going to:</h5>
+              <% user.view_destinations.each do |destination|  %>
+                <li><%= destination %></li>
+              <% end %>
+          <% end %>
+        <% end %>
+    </div>
+    <div class="col-sm-8">
+      <% Image.all.each do |image| %>
+        <img class="tinypad" height="130" width="230" src="<%= image.url %>">
+      <% end %>
+    </div>
+  </div>
+
+  <div class="smpad">
+  </div>
+
+</div> <!-- end of container -->

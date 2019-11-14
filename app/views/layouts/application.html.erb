@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Globe Trottr</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+    <!--Load GOogle platform library -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  </head>
+
+  <body>
+
+
+    <% if logged_in? %>
+
+    <div class="fixed-nav-bar">
+      <nav class="navbar float-left">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <%= link_to "My Trips", user_path(current_user.id), method: :get, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Explore Destinations", destinations_path, method: :get, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Community", users_path, method: :get, class: "nav-link" %>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="navbar float-right">
+        <span class="navbar-text float-right small-type">
+          Currently logged in as <%= current_user.username %>
+        </span>
+        <ul class="nav nav-pills">
+        <li class="navbar nav">
+          <%=link_to 'Logout', sessions_path, method: :delete, class: "small-type"%>
+        </li>
+        <li class="navbar nav">
+          <%= link_to "Edit Profile", edit_user_path(current_user.id), method: :get, class: "small-type"%>
+        </li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <% else %>
+    <div class="fixed-nav-bar">
+
+    <nav class="navbar float-left">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <%= link_to "Home", home_path, method: :get, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Explore Destinations", destinations_path, method: :get, class: "nav-link"%>
+        </li>
+      </ul>
+    </nav>
+
+    <nav class="navbar float-right">
+      <span class="form-inline">
+        <% if current_path != home_path && current_path != login_path && current_path != new_user_path%>
+          <%= form_tag(login_path) do %>
+            <%= text_field_tag :username, nil, placeholder: '  username', class: "tinypad", id: "inputsm"%>
+            <%= password_field_tag :password, nil, placeholder: '  password',  class: "tinypad", id: "inputsm" %>
+            <%= submit_tag 'Login', class: "btn float-right login_btn" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </span>
+  </nav>
+</div>
+
+
+
+    <%= yield %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

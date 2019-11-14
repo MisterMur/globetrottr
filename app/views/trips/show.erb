@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div class="d-flex justify-content-center h-100 headpad">
+    <h2>Your Trip to <%= @trip.to_s %></h2>
+  </div>
+
+  <div class="d-flex justify-content-center h-100 subpad">
+    <h5>Dates: <%= @trip.start_date.strftime("%m/%d/%Y") %> - <%= @trip.end_date.strftime("%m/%d/%Y") %></h5>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-6 items">
+      <h5 class="head-pad">Current Itinerary:</h5>
+      <% if @trip_activities != [] %>
+          <% @trip_activities.each do |ta| %>
+            <p><%= ta.date %> -
+            <%= link_to ta.activity.name, activity_path(id: ta.activity_id, trip_id: @trip.id) %> -
+            Rating: <%= ta.activity.rating %>
+            </p>
+          <% end %>
+      <% else %>
+        <img src="<%= Image.all.sample.url %>" height="250" width="400">
+      <% end %>
+    </div>
+
+    <div class="col-sm-6 items">
+
+        <%= form_tag activities_path, method: "get" do %>
+          <h5 class="head-pad">Add to Itinerary</h5>
+            <p>Date&nbsp<%= collection_select :trip_activity, :date, @trip.trip_dates, :to_s, :to_s%></p>
+            <p>Search for activity&nbsp<input type="text" name="search">
+          <%= hidden_field_tag :trip_id, @trip.id %>
+          <%= submit_tag("Search")%></p>
+        <% end %>
+    </div>
+  </div>
+  <div class="row upperpad">
+    <% if @trip_activities != [] %>
+      <% @trip_activities.each do |ta| %>
+        <% if ta.activity.photo_url != "Photo Unavailable" %>
+            <img height="100" width="150" class="tinypad" src="<%= ta.activity.photo_url %>" alt="">
+          <% end %>
+        <% end %>
+    <% end %>
+  </div>
+  <br>
+  <div class="d-flex justify-content-center h-100 bottom-pad">
+  <p><%= button_to "Delete this trip", @trip, method: "delete", class: "btn btn-custom btn-sm", id: "btnpad" %></p>
+  </div>
+
+
+</div>
