@@ -21,8 +21,10 @@ end
 Image.create(url: "http://www.experttravelguide.net/wp-content/uploads/2017/10/landing_bg.jpg")
 Image.create(url: "http://www.ecmpublishing.com/contentfiles/uploads/images/image001.jpg")
 Image.create(url: "http://travel-2-go.com/images/beachPier.jpg")
-Image.create(url: "https://res.cloudinary.com/jpress/image/fetch/c_fill,f_auto,h_1133,q_auto:eco,w_1700/https://inews.co.uk/wp-content/uploads/2018/11/shutterstock_186150560.jpg")
-Image.create(url: "http://www.applevacations.com/appleweb/images/sheratonKona212219.jpg")
+# Image.create(url: "https://res.cloudinary.com/jpress/image/fetch/c_fill,f_auto,h_1133,q_auto:eco,w_1700/https://inews.co.uk/wp-content/uploads/2018/11/shutterstock_186150560.jpg")##
+# Image.create(url: "http://www.applevacations.com/appleweb/images/sheratonKona212219.jpg")##
+Image.create(url: "https://s3.envato.com/files/246195780/nycfinished%20copy.jpg")
+Image.create(url: "https://www.slh.com/globalassets/country-pages/hero-images/united_arab_emirates.jpg?width=1024")
 Image.create(url: "http://www.gosunrisetravel.com/img/europe-travel-packages.jpg")
 
 
