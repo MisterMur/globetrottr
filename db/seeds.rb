@@ -5,24 +5,30 @@
 ##########################################################
 #          USE THIS TO RE-SEED A NEW DATABASE            #
 ##########################################################
+Image.destroy_all
+# Country.destroy_all
+# State.destroy_all
+# Destination.destroy_all
+User.destroy_all
+Activity.destroy_all
+TripActivity.destroy_all
+Trip.destroy_all
 
-CS.countries.each do |country_code, country_name|
-  country = Country.create(name: country_name)
-  CS.states(country_code).each do |state_code, state_name|
-    state = State.create(name: state_name, country_id: country.id)
-    CS.cities(state_code, country_code).each do |city|
-      Destination.create(city: city, state_id: state.id)
-    end
-  end
-end
+# CS.countries.each do |country_code, country_name|
+#   country = Country.create(name: country_name)
+#   CS.states(country_code).each do |state_code, state_name|
+#     state = State.create(name: state_name, country_id: country.id)
+#     CS.cities(state_code, country_code).each do |city|
+#       Destination.create(city: city, state_id: state.id)
+#     end
+#   end
+# end
 
 ########### this is to seed the images table
 
 Image.create(url: "http://www.experttravelguide.net/wp-content/uploads/2017/10/landing_bg.jpg")
 Image.create(url: "http://www.ecmpublishing.com/contentfiles/uploads/images/image001.jpg")
 Image.create(url: "http://travel-2-go.com/images/beachPier.jpg")
-# Image.create(url: "https://res.cloudinary.com/jpress/image/fetch/c_fill,f_auto,h_1133,q_auto:eco,w_1700/https://inews.co.uk/wp-content/uploads/2018/11/shutterstock_186150560.jpg")##
-# Image.create(url: "http://www.applevacations.com/appleweb/images/sheratonKona212219.jpg")##
 Image.create(url: "https://s3.envato.com/files/246195780/nycfinished%20copy.jpg")
 Image.create(url: "https://www.slh.com/globalassets/country-pages/hero-images/united_arab_emirates.jpg?width=1024")
 Image.create(url: "http://www.gosunrisetravel.com/img/europe-travel-packages.jpg")
