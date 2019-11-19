@@ -17,14 +17,14 @@ class Activity < ApplicationRecord
       "Photo Unavailable"
     else
       ref = spot.photos.first.photo_reference
-      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=#{ref}&key=AIzaSyBcF7WmTnqaJVXqW1u4Z2rhHEjOeiaNRtg"
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=#{ref}&key=#{<%= ENV["GOOGLE_API_KEY"] %>}"
     end
   end
 
 
   def self.get_spots(type, id)
     location = Destination.find_by(id: id).to_s
-    @client = GooglePlaces::Client.new("AIzaSyBjwhfCwbOrpNN0VU5sc7QspaTmDiBPot8")
+    @client = GooglePlaces::Client.new( <%= ENV["GOOGLE_API_KEY"] %> )
     @client.spots_by_query("#{type} near #{location}")
   end
 
