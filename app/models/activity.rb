@@ -3,7 +3,7 @@ class Activity < ApplicationRecord
   has_many :trip_activities
   has_many :trips, through: :trip_activities
   # before_action :connect_google_api
-
+  GOOGLE_API_KEY=  ENV['GOOGLE_API_KEY']
 
   def location
     #check trip association --> there's no relationship yet
@@ -17,14 +17,14 @@ class Activity < ApplicationRecord
       "Photo Unavailable"
     else
       ref = spot.photos.first.photo_reference
-      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=#{ref}&key=#{<%= ENV["GOOGLE_API_KEY"] %>}"
+      "https://maps.googleapis.com/maps/api/place/photo?maxwidth=200&photoreference=#{ref}&key=#{GOOGLE_API_KEY}"
     end
   end
 
 
   def self.get_spots(type, id)
     location = Destination.find_by(id: id).to_s
-    @client = GooglePlaces::Client.new( <%= ENV["GOOGLE_API_KEY"] %> )
+    @client = GooglePlaces::Client.new( "#{GOOGLE_API_KEY}" )
     @client.spots_by_query("#{type} near #{location}")
   end
 
